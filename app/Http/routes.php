@@ -16,4 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('articles', 'ArticlesController@index');
+Route::get('articles/create', 'ArticlesController@create');
+//Wild Card Route Must go last, or will be triggered.
 Route::get('articles/{id}', 'ArticlesController@show');
+Route::post('articles','ArticlesController@store');
