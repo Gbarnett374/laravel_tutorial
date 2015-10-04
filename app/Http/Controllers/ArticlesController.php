@@ -10,14 +10,14 @@ class ArticlesController extends Controller
 {
     function index()
     {
-    	$data['articles'] = Articles::all();
-    	return view('articles.index', $data);
+        $data['articles'] = Articles::all();
+        return view('articles.index', $data);
   
     }
 
     function show($id){
 
-	    $article = Articles::findOrFail($id);
-	    return view('articles.show')->with('article', $article);
+        $article = Articles::findOrFail($id);
+        return view('articles.show')->with('article', $article);
     }
 }
