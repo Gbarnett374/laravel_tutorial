@@ -14,7 +14,6 @@ class ArticlesController extends Controller
     {
         $data['articles'] = Articles::all();
         return view('articles.index', $data);
-  
     }
 
     function show($id){
