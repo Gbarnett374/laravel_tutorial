@@ -12,7 +12,7 @@ class ArticlesController extends Controller
 {
     function index()
     {
-        $data['articles'] = Articles::all();
+        $data['articles'] = Articles::latest('published_at')->get();
         return view('articles.index', $data);
     }
 
