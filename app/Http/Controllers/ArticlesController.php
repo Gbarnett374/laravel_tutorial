@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 use App\articles;
 // use Illuminate\Http\Request;
-use App\Http\Requests;
+use App\Http\Requests\CreateArticleRequest;
 use App\Http\Controllers\Controller;
-use Request;
 use Carbon\Carbon;
 
 class ArticlesController extends Controller
@@ -27,14 +26,10 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
 
-    function store()
+    function store(CreateArticleRequest $request)
     {
-        $input = Request::all();
 
-        //set published at since model is expecting it in the fillable array for mass assignment.
-        //use the Carbon class for now. 
-        // $input['published_at'] = Carbon::now();
-        $article = Articles::create($input);
+        Articles::create($request->all());
 
         return redirect('articles');
     }
