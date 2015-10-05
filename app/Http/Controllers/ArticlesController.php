@@ -12,7 +12,7 @@ class ArticlesController extends Controller
 {
     function index()
     {
-        $data['articles'] = Articles::latest('published_at')->get();
+        $data['articles'] = Articles::latest('published_at')->published()->get();
         return view('articles.index', $data);
     }
 
@@ -33,7 +33,7 @@ class ArticlesController extends Controller
 
         //set published at since model is expecting it in the fillable array for mass assignment.
         //use the Carbon class for now. 
-        $input['published_at'] = Carbon::now();
+        // $input['published_at'] = Carbon::now();
         $article = Articles::create($input);
 
         return redirect('articles');
