@@ -10,7 +10,8 @@ class articles extends Model
    protected $fillable = [
     'title',
     'body',
-    'published_at'
+    'published_at',
+    'user_id'
    ];
 
    //The line below will tell laravel to treat the published_at timestamp as a Carbon Instance. THis will allow us to call a bunch of cool functions on the date.
@@ -37,5 +38,13 @@ class articles extends Model
         //Will set the timestamp as well, some databases will only set the date. 
         // $this->attributes['published_at'] = Carbon::createFromFormat('Y-m-d',$date);
 
+   }
+   /**
+    * Define relationship for the article to user.
+    *An article belongs to one user. 
+    */
+   public function user()
+   {
+    return $this->belongsTo('App\User');
    }
 }
