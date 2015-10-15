@@ -23,3 +23,10 @@ Route::get('/', function () {
 // Route::get('articles/{id}/edit','ArticlesController@edit');
 
 Route::resource('articles','ArticlesController');
+
+//Routes for Auth. 
+
+Route::controllers([
+	'auth' => 'Auth\AuthController',
+	'password' => 'Auth\PasswordController',
+]);
