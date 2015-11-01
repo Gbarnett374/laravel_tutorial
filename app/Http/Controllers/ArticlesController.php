@@ -5,6 +5,7 @@ use App\articles;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use App\Http\Controllers\Controller;
+use Auth;
 use Carbon\Carbon;
 
 class ArticlesController extends Controller
@@ -29,7 +30,11 @@ class ArticlesController extends Controller
     function store(ArticleRequest $request)
     {
 
-        Articles::create($request->all());
+        // Articles::create($request->all());
+        $article = new Articles($request->all());
+        //This works because we defined the relationship between an article and the user in user.php
+        //Laravel automatically takes care of user id if you call method this way.
+        Auth::user()->articles()->save($article);
 
         return redirect('articles');
     }
